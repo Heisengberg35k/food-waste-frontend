@@ -1,22 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth';
 
-import { Login } from './login';
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './login.html',
+})
+export class Login {
 
-describe('Login', () => {
-  let component: Login;
-  let fixture: ComponentFixture<Login>;
+  email = '';
+  password = '';
+  message = '';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Login],
-    }).compileComponents();
+  constructor(private authService: AuthService) {}
 
-    fixture = TestBed.createComponent(Login);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
+  onLogin() {
+    const data = {
+      email: this.email,
+      password: this.password
+    };
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    this.authService.login(data).subscribe({
+      next: (res: any) => {
+        this.message = 'Login successful!';
+        console.log(res);
+      },
+      error: (err) => {
+        this.message = 'Login failed!';
+        console.error(err);
+      }
+    });
+  }
+}
