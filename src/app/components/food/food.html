@@ -1,0 +1,68 @@
+<h2>Food Listings</h2>
+
+<!-- ================= ADD FOOD ================= -->
+<div *ngIf="userRole === 'provider'" class="add-form">
+
+  <h3>Add Food</h3>
+
+  <input [(ngModel)]="newFood.title" placeholder="Title">
+  <input [(ngModel)]="newFood.description" placeholder="Description">
+  <input [(ngModel)]="newFood.quantity" type="number" placeholder="Quantity">
+  <input [(ngModel)]="newFood.expiry_date" placeholder="Expiry Date (YYYY-MM-DD)">
+  <input [(ngModel)]="newFood.location" placeholder="Location">
+
+  <button (click)="addFood()">Add Food</button>
+
+</div>
+
+<hr>
+
+<!-- ================= FOOD LIST ================= -->
+<h3>Available Food</h3>
+
+<div *ngFor="let food of foods" class="card">
+
+  <h3>{{ food.title }}</h3>
+
+  <p>{{ food.description }}</p>
+
+  <p><strong>Quantity:</strong> {{ food.quantity }}</p>
+  <p><strong>Location:</strong> {{ food.location }}</p>
+
+  <p>
+    <strong>Status:</strong>
+    <span 
+      [style.color]="
+        food.status === 'available' ? 'green' :
+        food.status === 'requested' ? 'orange' :
+        food.status === 'approved' ? 'blue' :
+        'gray'
+      ">
+      {{ food.status }}
+    </span>
+  </p>
+
+  <!-- Buttons -->
+  <div class="actions">
+
+    <button 
+      *ngIf="food.status === 'available' && userRole === 'charity'"
+      (click)="requestFood(food.id)">
+      Request
+    </button>
+
+    <button 
+      *ngIf="food.status === 'requested' && userRole === 'provider'"
+      (click)="approveFood(food.id)">
+      Approve
+    </button>
+
+    <button 
+      *ngIf="food.status === 'approved' && userRole === 'provider'"
+      (click)="completeFood(food.id)">
+      Complete
+    </button>
+
+  </div>
+
+</div>

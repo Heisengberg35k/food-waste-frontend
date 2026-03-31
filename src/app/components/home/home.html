@@ -1,1 +1,57 @@
-<p>home works!</p>
+<div class="home-container">
+
+  <h2 class="title">Food Waste Redistribution System</h2>
+
+  <!-- PROVIDER -->
+  <div *ngIf="userRole === 'provider'" class="dashboard">
+
+    <h3>Provider Dashboard</h3>
+
+    <div class="card-container">
+
+      <div class="card">
+        <h4>Add Food</h4>
+        <p>Create new food listings for charities.</p>
+        <a routerLink="/food">Go to Food Page</a>
+      </div>
+
+      <div class="card">
+        <h4>Manage Listings</h4>
+        <p>Approve and complete requests.</p>
+        <a routerLink="/food">Manage Food</a>
+      </div>
+
+      <div class="card">
+        <h4>Analytics</h4>
+        <p>View redistribution stats.</p>
+        <a routerLink="/analytics">View Analytics</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CHARITY -->
+  <div *ngIf="userRole === 'charity'" class="dashboard">
+
+    <h3>Charity Dashboard</h3>
+
+    <div class="card-container">
+
+      <div class="card">
+        <h4>Browse Food</h4>
+        <p>View available food listings.</p>
+        <a routerLink="/food">Browse Food</a>
+      </div>
+
+      <div class="card">
+        <h4>Request Food</h4>
+        <p>Request food from providers.</p>
+        <a routerLink="/food">Request Now</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

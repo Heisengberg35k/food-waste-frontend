@@ -1,7 +1,19 @@
-<nav>
-  <h2>Food Waste App</h2>
+<nav class="navbar">
 
-  <a routerLink="/">Home</a>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
+  <div class="logo">
+    FoodWaste
+  </div>
+
+  <div class="nav-links">
+    <a routerLink="/">Home</a>
+    <a routerLink="/food">Food</a>
+    <a routerLink="/analytics">Analytics</a>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+  </div>
+
+  <button *ngIf="isLoggedIn" (click)="logout()" class="logout-btn">
+    Logout
+  </button>
+
 </nav>

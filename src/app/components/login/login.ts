@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './login.html',
+  styleUrls: ['./login.css'], // ✅ ADD THIS
 })
 export class LoginComponent {
 
@@ -28,23 +29,23 @@ export class LoginComponent {
 
     this.authService.login(data).subscribe({
       next: (res: any) => {
-        console.log("RESPONSE:", res);
+        console.log("LOGIN RESPONSE:", res);
 
-        if (res.access_token) {
-          // Store JWT token
-          localStorage.setItem('token', res.access_token);
+        // 🔥 IMPORTANT FIX
+        const token = res.access_token || res.token;
 
-          // Show success message
+        if (token) {
+          localStorage.setItem('token', token);
+          console.log("TOKEN SAVED:", token);
+
           this.message = 'Login successful!';
-
-          // Redirect to home page
           this.router.navigate(['/']);
         } else {
           this.message = 'Login failed!';
         }
       },
       error: (err) => {
-        console.error("ERROR:", err);
+        console.error("LOGIN ERROR:", err);
         this.message = 'Login failed!';
       }
     });

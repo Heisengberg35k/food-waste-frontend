@@ -13,4 +13,8 @@ export class AuthService {
   login(data: any) {
     return this.http.post(`${this.apiUrl}/login`, data);
   }
+  getAnalytics() {
+  return this.http.get('http://127.0.0.1:5000/api/analytics/summary');
+  }
 }
+

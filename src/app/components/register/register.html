@@ -1,1 +1,16 @@
-<p>register works!</p>
+<h2>Register</h2>
+
+<input [(ngModel)]="name" placeholder="Name">
+<input type="text" [(ngModel)]="city" name="city" placeholder="City">
+<input [(ngModel)]="email" placeholder="Email">
+<input [(ngModel)]="password" type="password" placeholder="Password">
+
+<select [(ngModel)]="role">
+  <option value="">Select Role</option>
+  <option value="provider">Provider</option>
+  <option value="charity">Charity</option>
+</select>
+
+<button (click)="onRegister()">Register</button>
+
+<p>{{ message }}</p>

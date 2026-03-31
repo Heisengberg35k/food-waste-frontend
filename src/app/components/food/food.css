@@ -1,0 +1,43 @@
+/* Form */
+.add-form {
+  margin-bottom: 25px;
+}
+
+.add-form input {
+  display: block;
+  margin: 8px 0;
+  padding: 8px;
+  width: 260px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Cards */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 15px 0;
+  background: #f9f9f9;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Button group */
+.actions {
+  margin-top: 10px;
+}
